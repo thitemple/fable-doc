@@ -393,7 +393,7 @@ let z: IMyInterface = !!{| foo = "5"; bar = 4. |}
 
 ### Dynamic typing: don't read this!
 
-Through the use of the tools we just described above, Fable guarantees you shouldn't run into nasty bugs (as long as the interface contracts are correct) because all the code will be checked by the compiler. If it does not compile it either means your JS library does not exists or its path is not good or that your F# implementation laCks something. We do rely on Fable on systems that are used 24/7, web apps or Node.js apps. We know that if it compiles, it means a 99% chance of running without any problems.
+Through the use of the tools we just described above, Fable guarantees you shouldn't run into nasty bugs (as long as the interface contracts are correct) because all the code will be checked by the compiler. If it does not compile it either means your JS library does not exists or its path is not good or that your F# implementation lacks something. We do rely on Fable on systems that are used 24/7, web apps or Node.js apps. We know that if it compiles, it means a 99% chance of running without any problems.
 
 Our motto is: "If it compiles, it works!"
 
