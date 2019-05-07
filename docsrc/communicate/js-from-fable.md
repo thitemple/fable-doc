@@ -36,7 +36,26 @@ There are two ways to declare ES2015 imports in the Fable: by using either the *
 // import Express from "express"
 ```
 
-If the value is globally accessible in JS, you can use the `Global` attribute with an optional name parameter instead;
+You can also use the following alias attributes:
+
+```fsharp
+open Fable.Core
+open Fable.Core.JsInterop
+
+// Same as Import("*", "my-module")
+[<ImportAll("my-module")>]
+let myModule: obj = jsNative
+
+// Same as Import("default", "my-module")
+[<Import("default", from="express")>]
+let myModuleDefaultExport: obj = jsNative
+
+// The member name is taken from decorated value, here `myFunction`
+[<ImportMember("my-module")>]
+let myFunction(x: int): int = jsNative
+```
+
+If the value is globally accessible in JS, you can use the `Global` attribute with an optional name parameter instead.
 
 ```fsharp
  let [<Global>] console: JS.Console = jsNative
@@ -73,8 +92,9 @@ In order to use this in our Fable code, let's create an `interface` that will mi
 As you can see the process is quite easy. The `I` in `IAlert` is not mandatory but it's a precious hint that we're going to use an interface. The `abstract` keyword only indicates that there's no actual implementation in F#. That's true, since we rely on the JavaScript one.
 
 Now let's use this:
+
 ```fsharp
-  [<Import("*", "path/to/alert.js")>]
+  [<ImportAll("path/to/alert.js")>]
   let mylib: IAlert = jsNative
 ```
 
@@ -115,7 +135,7 @@ we could use the same method we used with `alert.js`:
     abstract drawSmiley: unit -> unit
     abstract drawBubble: unit -> unit
 
-  [<Import("*", "path/to/Canvas.js")>]
+  [<ImportAll("path/to/Canvas.js")>]
   let mylib: ICanvas = jsNative
 
   mylib.drawSmiley() // etc..
@@ -128,7 +148,7 @@ open Fable.Core.JsInterop // needed to call interop tools
 
 module Canvas =
   // here we just import a member function from canvas.js called drawSmiley.
-  let drawSmiley(id:string); unit = importMember "path/to/Canvas.js"
+  let drawSmiley(id:string): unit = importMember "path/to/Canvas.js"
   let drawBubble(id:string): unit = importMember "path/to/Canvas.js"
 
 Canvas.drawSmiley()
@@ -225,7 +245,8 @@ export default class MyClass {
 }
 ```
 
- Let's list its members:
+Let's list its members:
+
 - a `value` member which returns the current value with a getter and a setter
 - a method, `isAwesome`, that checks if the current value equals the awesome value
 - a static method `getPi()` that just returns the value of `Math.PI`
@@ -253,8 +274,8 @@ Here we used the `Emit` attribute to apply the JS `new` keyword and to build a J
 Last but not least, let's import MyClass:
 
 ```fsharp
-[<Import("default", "../public/MyClass.js")>]
-let MyClass : MyClassStatic = jsNative 
+[<ImportDefault("../public/MyClass.js")>]
+let MyClass : MyClassStatic = jsNative
 ```
 
 Now it's possible to use our JS class. Let's see the complete code:
@@ -270,7 +291,7 @@ type MyClassStatic =
   abstract Create: 'T * 'T -> MyClass<'T>
   abstract getPI : unit-> float
 
-[<Import("default", "../public/MyClass.js")>]
+[<ImportDefault("../public/MyClass.js")>]
 let MyClass : MyClassStatic = jsNative
 
 let myObject = MyClass.Create(40, 42)
@@ -293,7 +314,7 @@ mylib.triggerAlert ("PI is " + (string (MyClass.getPI())))
 It's possible to combine the `Import` and `Emit` attributes. So we can import and build MyClass in one go. Note that in this case `$0` is replaced by the imported element:
 
 ```fsharp
-[<Import("default", "../public/MyClass.js")>]
+[<ImportDefault("../public/MyClass.js")>]
 [<Emit("new $0({ value: $1, awesomeness: $2 })")>]
 let createMyClass(value: 'T, awesomeness: 'T) : MyClass<'T> = jsNative
 ```
