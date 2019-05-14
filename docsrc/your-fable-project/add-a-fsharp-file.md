@@ -30,14 +30,13 @@ For instance, if you take the Browser sample, in the src folder you will find an
         <Compile Include="App.fs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Fable.Core" Version="2.1.0-alpha-002" />
-        <PackageReference Include="Fable.Browser.Dom" Version="1.0.0-alpha-004" />
+        <PackageReference Include="Fable.Core" Version="3.0.0" />
+        <PackageReference Include="Fable.Browser.Dom" Version="1.0.0" />
     </ItemGroup>
 </Project>
 ```
 
-
-**Please be aware that the in F#, file order is important.** For instance, if file `A.fs` calls `B.fs` then you should reference `B.fs` first. Some editor can do it for you though.
+**Please be aware that in F#, file order is important.** For instance, if file `B.fs` calls `A.fs`, then you must place `A.fs` above `B.fs` in the file list.
 
 </li>
 </ul>
@@ -71,24 +70,24 @@ Let's add another file, `MyAwesomeFeature.fs`:
 <ItemGroup>
 ```
 
-Let's add another file, `Authentication.fs`, located in another folder `Shared` which is at the same depth than our `src` folder. Let's see the current state of our project tree:
+Let's add another file, `Authentication.fs`, located in another folder `Shared` which is at the same depth than our `src` folder (this can happen, for example, if the file is shared with another project, like a server). Let's see the current state of our project tree:
 
 ```
 myproject
     |_ src
-        |_ App.fs
         |_ MyAwesomeFeature.fs
+        |_ App.fs
         |_ App.fsproj
     |_ Shared
         |_ Authentication.fs
 ```
 
-This will result in:
+This can be expressed in the project file as:
 
 ```xml
 <ItemGroup>
-    <Compile Include="MyAwesomeFeature.fs" />
     <Compile Include="../Shared/Authentication.fs" />
+    <Compile Include="MyAwesomeFeature.fs" />
     <Compile Include="App.fs" />
 <ItemGroup>
 ```
