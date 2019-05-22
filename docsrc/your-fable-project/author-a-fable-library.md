@@ -24,4 +24,4 @@ That's all it takes to make your library compatible with Fable! In order to publ
 
 ### Testing
 
-It's a good idea to write unit tests for your library to make sure everything works as expected before publishing. The simplest way for that is to use Node.js and a JS test runner like [Mocha](https://mochajs.org/). You can check how other Fable libraries do it, [like Fable.Promise](https://github.com/fable-compiler/fable-promise/blob/e96a1ba7db446d1f12360fbc451814a32dac98a1/tests/PromiseTests.fs).
+It's a good idea to write unit tests for your library to make sure everything works as expected before publishing. The simplest way for that is to use Node.js and a JS test runner like [Mocha](https://mochajs.org/), as in [this sample](https://github.com/fable-compiler/fable2-samples/tree/master/mocha).
