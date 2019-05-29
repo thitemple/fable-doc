@@ -61,34 +61,36 @@ var nacara = {};
 <p>So we do need libraries. And Fable proposes a great variety of libraries ready for you to use like:</p>
 <ul>
 <li><a href="https://www.nuget.org/packages/Fable.Core/">Fable.Core</a>, which is required for every Fable project</li>
-<li><a href="https://www.nuget.org/packages/Fable.Browser.Dom/1.0.0-alpha-004">Fable.Browser.Dom</a>, for all your Dom need (window, documents)</li>
-<li><a href="https://www.nuget.org/packages?q=fable"><em>Other Fable packages...</em></a></li>
+<li><a href="https://www.nuget.org/packages/Fable.Browser.Dom">Fable.Browser.Dom</a>, for all your DOM needs (window, document)</li>
+<li><a href="https://www.nuget.org/packages/Fable.Elmish.React">Fable.Elmish.React</a>, to write web apps using the Elm architecture and React as the render engine</li>
+<li><a href="https://www.nuget.org/packages/Thoth.Json">Thoth.Json</a>, for JSON serialization</li>
 </ul>
-<p>There are 2 ways to call Fable libraries:
-1 - Reference them directly in your project file
-2 - Add the reference to the project using the <code>dotnet</code> command
-3 - Use paket manager.</p>
+<blockquote>
+<p>Please note that not all Nuget libraries will work with Fable. Refer to the library documentation to check if it's Fable-compatible.</p>
+</blockquote>
+<p>There are 2 ways to call Fable libraries:</p>
+<p>1 - Reference them directly in your project file
+2 - Use <a href="https://fsprojects.github.io/Paket/">Paket</a></p>
 <h3><a href="#option-1-reference-a-library-manually-in-your-project-file" aria-hidden="true" style="visibility:visible"><span class="anchor" id="option-1-reference-a-library-manually-in-your-project-file"></span>#</a> Option 1: reference a library manually in your project file</h3>
-<p>Just like <code>.fs</code> files, we reference libraries directly in the <code>.fsproj</code> file.</p>
-<p>We need to tell what library we need and what version we'd like to use. For instance for <code>Fable.Browser.Dom</code> version <code>1.0.0-alpha-004</code> we'll add the following node in the <code>.fsproj</code> file:</p>
-<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Browser.Dom&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;1.0.0-alpha-004&quot;</span><span style="color: #383A42"> /&gt;</span></code></pre>
+<p>Just like <code>.fs</code> files, we can reference libraries directly in the <code>.fsproj</code> file.</p>
+<p>We need to tell what library we need and what version we'd like to use. For instance for <code>Fable.Browser.Dom</code> version <code>1.0.0</code> we'll add the following node in the <code>.fsproj</code> file:</p>
+<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Browser.Dom&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;1.0.0&quot;</span><span style="color: #383A42"> /&gt;</span></code></pre>
 <p>Hence the standard format for a library:</p>
-<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;packageName&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;versionNumberString&quot;</span><span style="color: #383A42"> /&gt;</span></code></pre>
-<p>For instance here is a an <code>ItemGroup</code> with references for two libraries:</p>
-<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
-<span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Core&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;2.1.0-alpha-002&quot;</span><span style="color: #383A42"> /&gt;</span>
-<span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Browser.Dom&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;1.0.0-alpha-004&quot;</span><span style="color: #383A42"> /&gt;</span>
-<span style="color: #383A42">&lt;/</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span></code></pre>
-<p>That's basically all you need to do because our build process will then automatically download the libraries for you and compile your code against them.</p>
-<h3><a href="#option-2-use-dotnet-command" aria-hidden="true" style="visibility:visible"><span class="anchor" id="option-2-use-dotnet-command"></span>#</a> Option 2: use dotnet command!</h3>
-<p>This option leads to the same result as <em>Option 1</em> but uses the <code>dotnet command</code>: <code>dotnet add package packageName [-v optionalVersionNumber]</code>. For instance: <code>dotnet add package Fable.Elmish.React [-v 3.0.1]</code></p>
-<h3><a href="#option-3-use-paket" aria-hidden="true" style="visibility:visible"><span class="anchor" id="option-3-use-paket"></span>#</a> Option 3: use Paket!</h3>
-<p>The second way of adding libraries and often the most safe one in order to make sure libraries are compatible, is to use  the <a href="https://fsprojects.github.io/Paket/">paket</a> library manager. While it's not compulsory, it's in most cases a good choice for large projects.</p>
-<p>Using paket is clearly straightforward if you follow the <a href="https://fsprojects.github.io/Paket/getting-started.html">official documentation</a></p>
+<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;[PACKAGE_ID]&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;[PACKAGE_VERSION]&quot;</span><span style="color: #383A42"> /&gt;</span></code></pre>
+<p>The dotnet SDK offers a CLI command to do this operation without manually editing the .fsproj. Also if you omit the version number, it will automatically pick the most recent stable version for you. For instance:</p>
+<p><code>dotnet add package Fable.Elmish.React [-v 3.0.1]</code></p>
+<blockquote>
+<p>Some IDEs like Visual Studio or Rider also include options in their Graphic Interface to manage Nuget packages.</p>
+</blockquote>
+<p>That's basically all you need to do. The build process will then automatically download the libraries for you and compile your code against them.</p>
+<blockquote>
+<p>If you need to download the packages before the build (for example, to remove errors in the IDE), run the <code>dotnet restore</code> command in the folder containing the .fsproj file.</p>
+</blockquote>
+<h3><a href="#option-2-use-paket" aria-hidden="true" style="visibility:visible"><span class="anchor" id="option-2-use-paket"></span>#</a> Option 2: use Paket!</h3>
+<p>The second way of adding libraries is to use  the <a href="https://fsprojects.github.io/Paket/">Paket</a> library manager. While it's not compulsory, it's in most cases a good choice for large projects.</p>
+<p>Using Paket is clearly straightforward if you follow the <a href="https://fsprojects.github.io/Paket/getting-started.html">official documentation</a></p>
 <p>But in order to make things easier for you, we created a <a href="https://github.com/fable-compiler/fable2-samples/tree/master/withpaket">sample</a>. This is a good companion while you read the paket doc.</p>
-<p>Usually getting started with paket takes only a few minutes.</p>
-<h3><a href="#important-considerations" aria-hidden="true" style="visibility:visible"><span class="anchor" id="important-considerations"></span>#</a> Important considerations</h3>
-<p>Please note the library must be specifically Fable-compatible in order to work. If you plan to create A library for Fable please consult <a href="">Create a Library for Fable</a></p>
-</div></div></section></div><div class="column is-2-desktop full-height-scrollable-content        is-hidden-touch     "><div><nav class="toc-container"><ul class="toc-headings"><div class="toc-label"><a href="#use-a-fable-library">Use a Fable library</a></div><ul class="toc-headings"><li><a href="#option-1-reference-a-library-manually-in-your-project-file">Option 1: reference a library manually in your project file</a></li><li><a href="#option-2-use-dotnet-command">Option 2: use dotnet command!</a></li><li><a href="#option-3-use-paket">Option 3: use Paket!</a></li><li><a href="#important-considerations">Important considerations</a></li></ul></li></ul></nav></div></div></div><script type="text/javascript">
+<p>Usually getting started with Paket takes only a few minutes.</p>
+</div></div></section></div><div class="column is-2-desktop full-height-scrollable-content        is-hidden-touch     "><div><nav class="toc-container"><ul class="toc-headings"><div class="toc-label"><a href="#use-a-fable-library">Use a Fable library</a></div><ul class="toc-headings"><li><a href="#option-1-reference-a-library-manually-in-your-project-file">Option 1: reference a library manually in your project file</a></li><li><a href="#option-2-use-paket">Option 2: use Paket!</a></li></ul></li></ul></nav></div></div></div><script type="text/javascript">
 nacara.pageId = 'your-fable-project/use-a-fable-library';
                 </script></div></body></html>

@@ -1,4 +1,4 @@
-<html class="has-navbar-fixed-top"><head><title>Start a new project using samples · Fable</title><link rel="stylesheet" type="text/css" href="/fable-doc/style.css"/><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/><script src="https://polyfill.app/api/polyfill?features=scroll-behavior"></script><script type="text/javascript">
+<html class="has-navbar-fixed-top"><head><title>Author a Fable library · Fable</title><link rel="stylesheet" type="text/css" href="/fable-doc/style.css"/><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/><script src="https://polyfill.app/api/polyfill?features=scroll-behavior"></script><script type="text/javascript">
 var nacara = {};
                 </script><script type="text/javascript">window.onload = function () {
     // Initialize the menu state
@@ -56,92 +56,20 @@ var nacara = {};
         });
 };
 </script></head><body><nav class="navbar is-fixed-top"><div class="container"><div class="navbar-brand"><div class="navbar-item title is-4">Fable</div></div><div class="navbar-start"></div><div class="navbar-end"><a class="navbar-item" href="https://fable.io/repl/" target="_self"><span>Try it out</span></a><a class="navbar-item" href="https://gitter.im/fable-compiler/Fable" target="_blank" style="color:#24292e"><span class="icon"><i class=" fab fa-gitter fa-lg"></i></span><span>Support</span></a><a class="navbar-item" href="https://github.com/fable-compiler/fable" target="_blank" style="color:#24292e"><span class="icon"><i class=" fab fa-github fa-lg"></i></span></a><a class="navbar-item" href="https://twitter.com/FableCompiler" target="_blank" style="color:#55acee"><span class="icon"><i class=" fab fa-twitter fa-lg"></i></span></a></div></div></nav><div class="container"><div class="columns is-gapless"><div class="column is-2-desktop is-3-touch full-height-scrollable-content"><aside class="menu" style="margin-top:3.25rem"><p class="menu-label">Introduction</p><ul class="menu-list"><li><a class="" href="/fable-doc/introduction/foreword.html" data-menu-id="introduction/foreword">Foreword</a></li><li><a class="" href="/fable-doc/introduction/net-users-read-this.html" data-menu-id="introduction/net-users-read-this">Are you a .NET developer?</a></li><li><a class="" href="/fable-doc/introduction/js-users-read-this.html" data-menu-id="introduction/js-users-read-this">Are you a JS developer?</a></li></ul><p class="menu-label">Fable in 3 steps</p><ul class="menu-list"><li><a class="" href="/fable-doc/3-steps/discover.html" data-menu-id="3-steps/discover">What is Fable?</a></li><li><a class="" href="/fable-doc/3-steps/setup.html" data-menu-id="3-steps/setup">Setup</a></li><li><a class="" href="/fable-doc/3-steps/choose-a-template.html" data-menu-id="3-steps/choose-a-template">Start a new project using samples</a></li></ul><p class="menu-label">Your Fable project</p><ul class="menu-list"><li><a class="" href="/fable-doc/your-fable-project/add-a-fsharp-file.html" data-menu-id="your-fable-project/add-a-fsharp-file">Add a new F# file</a></li><li><a class="" href="/fable-doc/your-fable-project/use-a-fable-library.html" data-menu-id="your-fable-project/use-a-fable-library">Use a Fable library</a></li><li><a class="" href="/fable-doc/your-fable-project/build-and-run.html" data-menu-id="your-fable-project/build-and-run">Build &amp; Run</a></li></ul><p class="menu-label">Communicate with Javascript</p><ul class="menu-list"><li><a class="" href="/fable-doc/communicate/js-from-fable.html" data-menu-id="communicate/js-from-fable">Call JS from Fable</a></li><li><a class="" href="/fable-doc/communicate/fable-from-js.html" data-menu-id="communicate/fable-from-js">Call Fable from JavaScript</a></li><li><a class="" href="/fable-doc/communicate/numbers.html" data-menu-id="communicate/numbers">Numbers</a></li></ul><p class="menu-label">From .NET to Fable</p><ul class="menu-list"><li><a class="" href="/fable-doc/dotnet/numbers.html" data-menu-id="dotnet/numbers">Numeric Types</a></li><li><a class="" href="/fable-doc/dotnet/compatibility.html" data-menu-id="dotnet/compatibility">.NET and F# Compatibility</a></li></ul><p class="menu-label">Miscellaneous</p><ul class="menu-list"><li><a class="" href="/fable-doc/miscellaneous/official-samples.html" data-menu-id="miscellaneous/official-samples">Check official samples</a></li><li><a class="" href="/fable-doc/miscellaneous/awesome-list.html" data-menu-id="miscellaneous/awesome-list">Awesome Fable</a></li><li><a class="" href="/fable-doc/miscellaneous/fable-in-videos.html" data-menu-id="miscellaneous/fable-in-videos">Fable in videos</a></li></ul><p class="menu-label">New to F#?</p><ul class="menu-list"><li><a class="" href="/fable-doc/new-to-fsharp/overview-and-let.html" data-menu-id="new-to-fsharp/overview-and-let">Overview and let</a></li></ul></aside></div><div class="column is-8-desktop is-9-touch full-height-scrollable-content" style="scroll-behavior:smooth"><section class="section"><div class="content"><div><p></p>
-<p><strong>Start a new project</strong></p>
-<p>Now we're ready, let's start a new project using Fable!</p>
-<ul class="textual-steps">
-<li>
-<h2><a href="#download-a-fable-sample" aria-hidden="true" style="visibility:visible"><span class="anchor" id="download-a-fable-sample"></span>#</a> Download a Fable sample</h2>
-<p>The most common way is to download the <em>Fable suite of samples</em> using <code>git clone https://github.com/fable-compiler/fable2-samples.git</code>. There are several samples ready to use. Each located in its own folder.</p>
+<h2><a href="#author-a-fable-library" aria-hidden="true" style="visibility:visible"><span class="anchor" id="author-a-fable-library"></span>#</a> Author a Fable library</h2>
+<p>To write a library that can be used in Fable you only need to fulfill a few conditions:</p>
 <ul>
-<li>
-<p><strong>Browser project</strong></p>
-<ul>
-<li>
-<p>Simple HTML5 canvas and Browser DOM (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/browser">browser</a></em>)</p>
-</li>
-<li>
-<p>More complex browser app with fetch &amp; promises &amp; json parsing (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/promises">promises</a></em>)</p>
-</li>
+<li>Don't use FSharp.Core/BCL APIs that are not compatible with Fable.</li>
+<li>Include the source files in the Nuget package in a folder named <code>fable</code>.</li>
 </ul>
-</li>
-<li>
-<p><strong>React project</strong></p>
-<ul>
-<li>
-<p><a href="https://elm-lang.org/">Elm</a> like <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application (SPA)</a> with React (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/minimal">minimal</a></em>)</p>
-</li>
-<li>
-<p>Start a frontend app SPA using Bulma &amp; React (<code>git clone https://github.com/MangelMaxime/fulma-demo</code>)</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Node.js project</strong></p>
-<ul>
-<li>
-<p>Node.js app with fetch &amp; promises (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/nodejs">nodejs</a></em>)</p>
-</li>
-<li>
-<p>Bundled Node.js app with fetch &amp; promises (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/nodejsbundle">nodejsbundle</a></em>)</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Advanced samples</strong></p>
-<ul>
-<li>
-<p>Browser app with fetch &amp; promises &amp; json parsing using .paket manager to resolve .NET dependencies (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/withpaket">withpaket</a></em>)</p>
-</li>
-<li>
-<p>Browser app which features interoperability: calling our javascript code from Fable (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/interop">interop</a></em>)</p>
-</li>
-<li>
-<p>Browser app which features interoperability: calling our Fable code from javascript (<em><a href="https://github.com/fable-compiler/fable2-samples/tree/master/interopFableFromJs">interopFableFromJs</a></em>)</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<h2><a href="#install-js-dependencies" aria-hidden="true" style="visibility:visible"><span class="anchor" id="install-js-dependencies"></span>#</a> Install JS dependencies</h2>
-<p>The JS dependencies are located in the package.json file. Since we're using JS libraries, we'll need to install them</p>
-<ul>
-<li>using npm: <code>npm install</code></li>
-</ul>
-<p>It will create a <code>node_modules</code> folder and a <code>package-lock.json</code> file.</p>
-<p><strong>A note about lock files</strong></p>
-<p>Lock files like <code>package-lock.json</code>, if you're using npm should be committed to ensure reproducible builds whenever anybody clones the repo.</p>
-</li>
-<li>
-<h2><a href="#build-run-update-the-app" aria-hidden="true" style="visibility:visible"><span class="anchor" id="build-run-update-the-app"></span>#</a> Build &amp; Run &amp; Update the app</h2>
-<p>Now we're done the dependencies, let's start our app in watch mode. Depending on the kind of template the instructions my differ.</p>
-<article class="message is-info">
-                <div class="message-body"><p>Always read the <code>README.md</code> file shipped in a template so that you always get things to work properly.</p>
-</div>
-</article>
-<p><strong>Web app</strong></p>
-<p>For a web app, unless advised, it will always be <code>npm start</code></p>
-<p>Then you'll be able to access your project from <a href="http://localhost:8080/">http://localhost:8080/</a>. So it's time to open this address in your favorite browser.</p>
-<p>If you now open the project with your favourite code editor, you can make some changes in the <code>App.fs</code> file located in the <code>src</code> folder. Save the changes and if compilation succeeds you should be able to see your changes directly in your browser.</p>
-<p><strong>Node.js app</strong></p>
-<p>For a Node.js app, unless advised, it will always be <code>npm build</code></p>
-<p>Then you'll be able see the generated JS files in the <code>build</code> folder.</p>
-<article class="message is-info">
-                <div class="message-body"><p>In general, check the <code>README.md</code> and <code>package.json</code> to get more information about the project and other build targets.</p>
-</div>
-</article>
-</li>
-</ul>
-</div></div></section></div><div class="column is-2-desktop full-height-scrollable-content        is-hidden-touch     "><div><nav class="toc-container"><ul class="toc-headings"><div class="toc-label"><a href="#download-a-fable-sample">Download a Fable sample</a></div></li><div class="toc-label"><a href="#install-js-dependencies">Install JS dependencies</a></div></li><div class="toc-label"><a href="#build-run-update-the-app">Build & Run & Update the app</a></div></li></ul></nav></div></div></div><script type="text/javascript">
-nacara.pageId = '3-steps/choose-a-template';
+<p>The second point may sound complicated but it's only a matter of adding a couple of lines to your project file and let the <code>dotnet pack</code> command do all the rest.</p>
+<pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #A0A1A7;font-style: italic">&lt;!-- Add source files to &quot;fable&quot; folder in Nuget package --&gt;</span>
+<span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
+<span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Content</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;*.fsproj; **\*.fs&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">PackagePath</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;fable\&quot;</span><span style="color: #383A42"> /&gt;</span>
+<span style="color: #383A42">&lt;/</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span></code></pre>
+<p>That's all it takes to make your library compatible with Fable! In order to publish the package to Nuget check <a href="https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli">the Microsoft documentation</a> or alternatively you can also <a href="https://fake.build/dotnet-nuget.html#Creating-NuGet-packages">use Fake</a>.</p>
+<h3><a href="#testing" aria-hidden="true" style="visibility:visible"><span class="anchor" id="testing"></span>#</a> Testing</h3>
+<p>It's a good idea to write unit tests for your library to make sure everything works as expected before publishing. The simplest way for that is to use Node.js and a JS test runner like <a href="https://mochajs.org/">Mocha</a>, as in <a href="https://github.com/fable-compiler/fable2-samples/tree/master/mocha">this sample</a>.</p>
+</div></div></section></div><div class="column is-2-desktop full-height-scrollable-content        is-hidden-touch     "><div><nav class="toc-container"><ul class="toc-headings"><div class="toc-label"><a href="#author-a-fable-library">Author a Fable library</a></div><ul class="toc-headings"><li><a href="#testing">Testing</a></li></ul></li></ul></nav></div></div></div><script type="text/javascript">
+nacara.pageId = 'your-fable-project/author-a-fable-library';
                 </script></div></body></html>

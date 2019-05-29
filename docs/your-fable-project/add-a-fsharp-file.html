@@ -74,11 +74,11 @@ var nacara = {};
 <span>        </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;App.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;/</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
-<span>        </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Core&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;2.1.0-alpha-002&quot;</span><span style="color: #383A42"> /&gt;</span>
-<span>        </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Browser.Dom&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;1.0.0-alpha-004&quot;</span><span style="color: #383A42"> /&gt;</span>
+<span>        </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Core&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;3.0.0&quot;</span><span style="color: #383A42"> /&gt;</span>
+<span>        </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">PackageReference</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;Fable.Browser.Dom&quot;</span><span style="color: #383A42"> </span><span style="color: #986801">Version</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;1.0.0&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;/</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
 <span style="color: #383A42">&lt;/</span><span style="color: #E45649">Project</span><span style="color: #383A42">&gt;</span></code></pre>
-<p><strong>Please be aware that the in F#, file order is important.</strong> For instance, if file <code>A.fs</code> calls <code>B.fs</code> then you should reference <code>B.fs</code> first. Some editor can do it for you though.</p>
+<p><strong>Please be aware that in F#, file order is important.</strong> For instance, if file <code>B.fs</code> calls <code>A.fs</code>, then you must place <code>A.fs</code> above <code>B.fs</code> in the file list.</p>
 </li>
 </ul>
 <h2><a href="#how-does-it-work" aria-hidden="true" style="visibility:visible"><span class="anchor" id="how-does-it-work"></span>#</a> How does it work?</h2>
@@ -96,19 +96,19 @@ var nacara = {};
 <span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;MyAwesomeFeature.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;App.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span></code></pre>
-<p>Let's add another file, <code>Authentication.fs</code>, located in another folder <code>Shared</code> which is at the same depth than our <code>src</code> folder. Let's see the current state of our project tree:</p>
+<p>Let's add another file, <code>Authentication.fs</code>, located in another folder <code>Shared</code> which is at the same depth than our <code>src</code> folder (this can happen, for example, if the file is shared with another project, like a server). Let's see the current state of our project tree:</p>
 <pre><code>myproject
     |_ src
-        |_ App.fs
         |_ MyAwesomeFeature.fs
+        |_ App.fs
         |_ App.fsproj
     |_ Shared
         |_ Authentication.fs
 </code></pre>
-<p>This will result in:</p>
+<p>This can be expressed in the project file as:</p>
 <pre style="background-color: #FAFAFA;color: ;padding: 1em"><code><span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span>
-<span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;MyAwesomeFeature.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;../Shared/Authentication.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
+<span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;MyAwesomeFeature.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span>    </span><span style="color: #383A42">&lt;</span><span style="color: #E45649">Compile</span><span style="color: #383A42"> </span><span style="color: #986801">Include</span><span style="color: #383A42">=</span><span style="color: #50A14F">&quot;App.fs&quot;</span><span style="color: #383A42"> /&gt;</span>
 <span style="color: #383A42">&lt;</span><span style="color: #E45649">ItemGroup</span><span style="color: #383A42">&gt;</span></code></pre>
 </div></div></section></div><div class="column is-2-desktop full-height-scrollable-content        is-hidden-touch     "><div><nav class="toc-container"></nav></div></div></div><script type="text/javascript">
